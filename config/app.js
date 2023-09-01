@@ -13,12 +13,12 @@ server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
 server.use(cookieParser());
 server.use(morgan('dev'));
-server.use(cors());
+server.use(cors({origin: 'https://movie-play-client.vercel.app/',}));
 server.use((req,res,next)=>{
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Origin', '*');         //Aqui se ingresa la url del front para que unicamente acepte request de alli
+    res.header('Access-Control-Allow-Origin', 'https://movie-play-client.vercel.app/');         //Aqui se ingresa la url del front para que unicamente acepte request de alli
     next();
 })
 
